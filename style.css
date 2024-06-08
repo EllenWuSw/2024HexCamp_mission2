@@ -1,0 +1,446 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* 表頭部分參考洧杰老師，尤其是使用"~""+"的部分 */
+body{
+    font-family: "Noto Sans TC", sans-serif;
+    background: #ffffff;
+    line-height: 1.5;
+    padding-top: 60px; /* 因為表頭使用position: fixed;會吃掉一些body的空間，所以加上60px */
+}
+
+*, *::before, *::after {box-sizing: border-box;}
+img{
+    max-width: 100%;
+    height: auto;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    margin: 0 auto;
+}
+.header{
+    background: #fff;
+    border-bottom: 1px solid #F1F1F1;
+    position: fixed; /*凍結表單*/
+    top: 0; /*固定在上方*/
+    width: 100%;
+    z-index: 3;
+}
+.header-inner{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.container{
+    max-width: 1296px;
+    margin: 0 auto;
+}
+.header-logo{
+    margin-right: 318px;
+}
+.menu{
+    display: flex;
+    gap: 40px
+}
+.menu .menu-list a{
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: none;
+    padding: 4px 8px;
+    position: relative;
+}
+.menu-btn{
+    display: none;
+    cursor: pointer;/*如果滑鼠移動到這個元件上，會有選取的滑鼠游標樣式出現*/
+}
+.menu-btn .menu-icon{
+    display: none;
+}
+.menu-control:checked + .menu-btn .open{
+    display: none;
+}
+.menu-control:checked + .menu-btn .close{
+    display: inline;
+}
+.menu-control:not(:checked) + .menu-btn .open{
+    display: inline;
+}
+.menu-control:not(:checked) + .menu-btn .close {
+    display: none;
+}
+.menu-control{
+    display: none; /*隱藏checkBox的選取鈕*/
+}
+.menu .menu-list a{
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 4px 8px;
+    position: relative;
+} 
+.menu .menu-list a::before,
+.menu .menu-list a::after{
+    content: ""; /*產生一個空的元素，偽元素必用*/
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #919191;
+    opacity: 0;/*滑鼠移到上面即有透明度的效果 https://www.webdesigns.com.tw/css_img-opacity.asp*/
+    -webkit-box-reflect: below 16px;/*對稱鏡射*/
+} 
+.menu .menu-list a::before{
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+} 
+.menu .menu-list a::after{
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+} 
+.menu .menu-list a:hover::before,
+.menu .menu-list a:hover::after{
+    opacity: 1; /*滑鼠移到上面即有透明度的效果 https://www.webdesigns.com.tw/css_img-opacity.asp*/
+}
+
+/*以下為banner*/
+.banner{
+    background: #FAFAFA;
+    margin: 0 auto;
+}
+.contanter-banner{
+    max-width: 1296px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.motto{
+    margin: 0 auto;
+    text-align: center;
+}
+.motto-top, .motto-bot{
+    position: relative;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28.8px;
+    color: #1E1E1E;
+    z-index: 1;
+}
+.motto-top{
+    margin-bottom: 16px;
+}
+.motto-top::before{
+    content: open-quote;
+    position: absolute;
+    font-size: 120px;
+    left: 315px;
+    top: 10px;
+    color: #E9E9E9;
+}
+.motto-top::after{
+    content: url("https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/mark.png?raw=true");
+    position: absolute;
+    top: 8px;
+    right: 365px;
+    z-index: -1;
+}
+.motto-bot::before{
+    content: url("https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/mark.png?raw=true");
+    position: absolute;
+    top: 8px;
+    right: 390px;
+    z-index: -1;
+}
+.motto-bot::after{
+    content: close-quote;
+    position: absolute;
+    font-size: 120px;
+    top: 75px;
+    left: 905px;
+    color: #E9E9E9;
+}
+.banner-list{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 0 24px;
+    margin-top: 83px;  
+}
+.banner-list-2b, .banner-list-2c{
+    position: relative;
+    color: #5B5B5B;
+    margin-bottom: 8px;
+}
+.banner-list-2b::after, .banner-list-2c::after{
+    content: "";
+    position: absolute;
+    background: #C1C1C1;
+    width: 24px;
+    height: 2px;
+}
+.banner-list-2b::after{
+    top: 25px;
+    right: 172px;
+}
+.banner-list-2c::after{
+    top: 25px;
+    left: 187px;
+}
+/*以下為products*/
+.products{
+    max-width: 1296px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+.card-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:  80px 24px;
+    text-align: center;
+}
+.card{
+    max-width: 636px;
+}
+.card img{
+    border-radius: 8px;
+    border: 1px solid #F1F1F1;
+    margin-bottom: 16px;
+}
+.card img:hover{
+    opacity: 0.5;
+}
+.card-h2{
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+.card-h2 a{
+    color: #3B3B3B;
+}
+.card-p{
+    color: #919191;
+    margin-bottom: 24px;
+}
+.card-h2, .card-p{
+    text-align: left;
+}
+
+.tagcard{
+    display: flex;
+    gap: 0 10px;
+}
+.tag{
+    padding: 4px 12px 4px 12px;
+    border-radius: 16px;
+    background-color: #F1F1F1;
+}
+.tag a{
+    color: #3B3B3B;
+}
+.next-page{
+    display: flex;
+    justify-content: center;
+    margin-top: 72px;
+    margin-bottom: 120px;
+    gap: 0 16px;
+}
+
+.next-btn{
+    border-radius: 4px;
+}
+
+.next-btn:hover{
+    background: #1E1E1E;
+}
+
+.next-page-link{
+    color: #3B3B3B;
+    font-size: 24px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 2px 13px;
+}
+
+.next-page-link:hover{
+    color: #ffffff;
+}
+
+/*以下為footer*/
+.footer{
+    background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-lg.png?raw=true);
+    margin: 0 auto;
+}
+.footer-nav{
+    max-width: 1296px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.footer-nameCard p{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: #3B3B3B;
+}
+.footer-nameCard h5{
+    font-size: 20px;
+    line-height: 24px;
+    color: #919191; 
+}
+.contact-nav{
+    display: flex;
+    flex-direction:column;
+    row-gap: 24px;
+    justify-content: center;
+}
+.contact-nav li img{
+    vertical-align: middle;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.contact-nav li{
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+}
+.contact-nav li a{
+    padding-left:24px;
+    padding-right: 24px;    
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+}
+.form-btn a, .ig-btn a, .fb-btn a{
+    color: #3B3B3B;
+}   
+.form-btn:hover, .ig-btn:hover, .fb-btn:hover{
+    background: #000;
+}
+.form-btn a:hover, .ig-btn a:hover, .fb-btn a:hover{
+    color: white;
+}
+
+/*以下為響應式設定*/
+@media(max-width:1296px){
+    .container{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .card-list{
+        justify-content: center;
+    }
+    .motto-top::after{/*mark*/
+        left: 630px;
+    }
+    .motto-top::before{/*上引號*/
+        left: 190px;
+    }
+    .motto-bot::after{/*下引號*/
+        left: 800px;
+    }
+    .motto-bot::before{/*mark*/
+        left: 610px;
+    }
+}
+@media(max-width:992px){
+    .header-inner{
+        justify-content: space-between;
+    }
+    .logo{
+        margin-right: 0px;
+    }
+    .menu-btn{
+        display: block;
+    }
+    .menu{
+    display: none;
+    }
+    .menu-control:checked ~ .menu {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    }
+    .motto-top::before{/*上引號*/
+        top: 0px;
+        left: 250px;
+    }
+    .motto-bot::after{/*下引號*/
+        display: none;
+    }
+    .motto-top::after,.motto-bot::before{/*mark*/
+        display: none;
+    }
+}
+@media(max-width:576px){
+    .header-logo{
+        margin-right: 0px;
+    }
+    .motto-top::before{/*上引號*/
+        top: 0px;
+        left: 155px;
+    }
+    .footer-nav{
+        flex-direction: column;
+        align-items: center;
+        row-gap: 40px;
+    }
+}
